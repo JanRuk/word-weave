@@ -1,15 +1,18 @@
 package com.github.JanRuk.controller;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Random;
 
 public class MainSceneController {
 
@@ -21,7 +24,7 @@ public class MainSceneController {
     public Label lblG, lblH, lblI, lblJ, lblK, lblL;
     public Label lblM, lblN, lblO, lblP, lblQ, lblR, lblS, lblT, lblU, lblV, lblW, lblX, lblY, lblZ;
     public Label lblTitle;
-    public TextField txtR1C1,txtR1C2,txtR1C3,txtR1C4,txtR1C5;
+    public TextField txtR1C1, txtR1C2, txtR1C3, txtR1C4, txtR1C5;
     public TextField txtR2C1, txtR2C2, txtR2C3, txtR2C4, txtR2C5;
     public TextField txtR3C1, txtR3C2, txtR3C3, txtR3C4, txtR3C5;
     public TextField txtR4C1, txtR4C2, txtR4C3, txtR4C4, txtR4C5;
@@ -37,6 +40,9 @@ public class MainSceneController {
 
     public void initialize() {
         disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
+        setTextFieldsToSingleLetters(hbxRow1,hbxRow2, hbxRow3, hbxRow4, hbxRow5);
+        System.out.println(generateWord());
+
     }
 
     public void btnClearOnAction(ActionEvent event) {
@@ -51,15 +57,55 @@ public class MainSceneController {
 
     }
 
-    public void disableRows(HBox... hbxRow) {
-        for (HBox hbox: hbxRow) {
-            for (Node node: hbox.getChildren()) {
+    private void disableRows(HBox... hbxRow) {
+        for (HBox hbox : hbxRow) {
+            for (Node node : hbox.getChildren()) {
                 if (node instanceof TextField) {
                     node.setDisable(true);
                 }
             }
         }
     }
+
+    private String generateWord() {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get("/home/janinda/Documents/dep-13/projects/word-weave/src/main/resources/word/word-list.txt")));
+            String[] words = content.split(",");
+            return words[new Random().nextInt(words.length)].trim();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void setTextFieldsToSingleLetters(HBox... hbxRow) {
+        for (HBox hbox : hbxRow) {
+            for (int i = 0; i < hbox.getChildren().size(); i++) {
+                Node node = hbox.getChildren().get(i);
+                final int index = i;
+                if (node instanceof TextField textField) {
+                    textField.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (!newValue.isEmpty()) {
+                            textField.setText(newValue.substring(0, 1));
+                            if (index < hbox.getChildren().size() - 1) {
+                                Node next = hbox.getChildren().get(index + 1);
+                                if (next instanceof TextField) next.requestFocus();
+                            }
+                        }
+                    });
+                    textField.setOnKeyReleased(event -> {
+                        if (event.getCode() == KeyCode.BACK_SPACE) {
+                            if (index > 0) {
+                                Node previous = hbox.getChildren().get(index - 1);
+                                if (previous instanceof TextField) previous.requestFocus();
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
 
 }
 
