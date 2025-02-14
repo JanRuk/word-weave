@@ -35,7 +35,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.halignment="CENTER">
+                <HBox fx:id="hbxRow1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.halignment="CENTER">
                     <children>
                         <TextField fx:id="txtR1C1" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
@@ -82,7 +82,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="2">
+                <HBox fx:id="hbxRow3" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="2">
                     <children>
                         <TextField fx:id="txtR3C1" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
@@ -129,7 +129,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER" layoutX="10.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="1">
+                <HBox fx:id="hbxRow2" alignment="CENTER" layoutX="10.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="1">
                     <children>
                         <TextField fx:id="txtR2C1" alignment="CENTER" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
@@ -176,7 +176,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER" layoutX="10.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="3">
+                <HBox fx:id="hbxRow4" alignment="CENTER" layoutX="10.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="3">
                     <children>
                         <TextField fx:id="txtR4C1" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
@@ -223,7 +223,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER" layoutX="10.0" layoutY="232.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="4">
+                <HBox fx:id="hbxRow5" alignment="CENTER" layoutX="10.0" layoutY="232.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="4">
                     <children>
                         <TextField fx:id="txtR5C1" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
@@ -270,7 +270,7 @@
                         <Insets left="10.0" />
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER" layoutX="10.0" layoutY="306.0" prefHeight="79.0" prefWidth="315.0" spacing="15.0" GridPane.rowIndex="5">
+                <HBox fx:id="hbxRow6" alignment="CENTER" layoutX="10.0" layoutY="306.0" prefHeight="79.0" prefWidth="315.0" spacing="15.0" GridPane.rowIndex="5">
                     <children>
                         <TextField fx:id="txtR6C1" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
