@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -38,11 +39,31 @@ public class MainSceneController {
     public HBox hbxRow6;
     public Label lblWinStreak;
 
-    public void initialize() {
-        disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
-        setTextFieldsToSingleLetters(hbxRow1,hbxRow2, hbxRow3, hbxRow4, hbxRow5);
-        System.out.println(generateWord());
+    public final String wordToGuess = generateWord();
+    public StringBuilder currentWord = new StringBuilder();
+    public AnchorPane root;
+    public GridPane grdRows;
+    HBox activeHbox;
 
+    public void initialize() {
+//        disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
+        setTextFieldsToSingleLetters(hbxRow1,hbxRow2, hbxRow3, hbxRow4, hbxRow5);
+
+    }
+
+    public void btnSubmitOnAction(ActionEvent event) {
+        for (Node node : grdRows.getChildren()) {
+            if (node instanceof HBox hbox) {
+                if (isActiveHBox(hbox)) {
+                    activeHbox = hbox;
+                    break;
+                }
+            }
+        }
+        for (Node node : activeHbox.getChildren()) {
+            if (node instanceof TextField) currentWord.append(((TextField) node).getText());
+        }
+        System.out.println(currentWord.toString());
     }
 
     public void btnClearOnAction(ActionEvent event) {
@@ -50,10 +71,6 @@ public class MainSceneController {
     }
 
     public void btnExitOnAction(ActionEvent event) {
-
-    }
-
-    public void btnSubmitOnAction(ActionEvent event) {
 
     }
 
@@ -105,7 +122,22 @@ public class MainSceneController {
             }
         }
     }
+    // Enable or disable all text fields in a HBox
+    private void setHBoxDisabled(HBox hbox, boolean disabled) {
+        for (Node node : hbox.getChildren()) {
+            if (node instanceof TextField) {
+                ((TextField) node).setDisable(disabled);
+                if (!disabled) ((TextField) node).requestFocus();
+            }
+        }
+    }
 
+    private boolean isActiveHBox(HBox hbox) {
+        for (Node node : hbox.getChildren()) {
+            if (node instanceof TextField && !((TextField) node).isDisable()) return true;
+        }
+        return false;
+    }
 
 }
 

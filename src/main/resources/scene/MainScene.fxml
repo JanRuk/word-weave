@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="710.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JanRuk.controller.MainSceneController">
+<AnchorPane fx:id="root" prefHeight="710.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JanRuk.controller.MainSceneController">
     <children>
         <AnchorPane fx:id="anchrpnTitle" layoutX="105.0" layoutY="21.0" prefHeight="75.0" prefWidth="438.0" AnchorPane.bottomAnchor="614.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="21.0">
             <children>
@@ -22,7 +22,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <GridPane layoutX="169.0" layoutY="96.0" prefHeight="391.0" prefWidth="315.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0">
+        <GridPane fx:id="grdRows" layoutX="169.0" layoutY="96.0" prefHeight="391.0" prefWidth="315.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="180.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
