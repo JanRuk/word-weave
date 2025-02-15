@@ -2,6 +2,7 @@ package com.github.JanRuk.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -46,9 +47,9 @@ public class MainSceneController {
     HBox activeHbox;
 
     public void initialize() {
-//        disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
+        disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
         setTextFieldsToSingleLetters(hbxRow1,hbxRow2, hbxRow3, hbxRow4, hbxRow5);
-
+        System.out.println(wordToGuess);
     }
 
     public void btnSubmitOnAction(ActionEvent event) {
@@ -64,6 +65,32 @@ public class MainSceneController {
             if (node instanceof TextField) currentWord.append(((TextField) node).getText());
         }
         System.out.println(currentWord.toString());
+
+        String guessedWord = currentWord.toString().toUpperCase();
+
+
+        if (guessedWord.equals(wordToGuess)) {
+            new Alert(Alert.AlertType.INFORMATION, "You guessed correctly").show();
+        } else {
+            moveToNextHBox(activeHbox);
+        }
+    }
+
+    private void moveToNextHBox(HBox activeHbox) {
+        boolean foundCurrent = false;
+        for (Node node : grdRows.getChildren()) {
+            if (node instanceof HBox) {
+                HBox hbox = (HBox) node;
+                if (foundCurrent) {
+                    setHBoxDisabled(hbox, false);
+                    return;
+                }
+                if (hbox == activeHbox) {
+                    foundCurrent = true;
+                    setHBoxDisabled(hbox, true);
+                }
+            }
+        }
     }
 
     public void btnClearOnAction(ActionEvent event) {
@@ -88,7 +115,7 @@ public class MainSceneController {
         try {
             String content = new String(Files.readAllBytes(Paths.get("/home/janinda/Documents/dep-13/projects/word-weave/src/main/resources/word/word-list.txt")));
             String[] words = content.split(",");
-            return words[new Random().nextInt(words.length)].trim();
+            return words[new Random().nextInt(words.length)].trim().toUpperCase();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
