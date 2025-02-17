@@ -45,7 +45,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR1C2" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -53,7 +53,7 @@
                                 <Font name="System Bold" size="17.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR1C3" layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -61,7 +61,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR1C4" layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -69,7 +69,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR1C5" layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -84,7 +84,7 @@
                 </HBox>
                 <HBox fx:id="hbxRow2" alignment="CENTER" layoutX="10.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="1">
                     <children>
-                        <TextField fx:id="txtR2C1" alignment="CENTER" prefHeight="40.0" prefWidth="40.0">
+                        <TextField alignment="CENTER" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -92,7 +92,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR2C2" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -100,7 +100,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR2C3" layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -108,7 +108,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR2C4" layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -116,7 +116,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR2C5" layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -131,7 +131,7 @@
                 </HBox>
                 <HBox fx:id="hbxRow3" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="2">
                     <children>
-                        <TextField fx:id="txtR3C1" prefHeight="40.0" prefWidth="40.0">
+                        <TextField prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -139,7 +139,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR3C2" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -147,7 +147,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR3C3" layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -155,7 +155,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR3C4" layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -163,7 +163,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR3C5" layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -178,7 +178,7 @@
                 </HBox>
                 <HBox fx:id="hbxRow4" alignment="CENTER" layoutX="10.0" layoutY="84.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="3">
                     <children>
-                        <TextField fx:id="txtR4C1" prefHeight="40.0" prefWidth="40.0">
+                        <TextField prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -186,7 +186,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR4C2" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -194,7 +194,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR4C3" layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -202,7 +202,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR4C4" layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -210,7 +210,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR4C5" layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -225,7 +225,7 @@
                 </HBox>
                 <HBox fx:id="hbxRow5" alignment="CENTER" layoutX="10.0" layoutY="232.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="4">
                     <children>
-                        <TextField fx:id="txtR5C1" prefHeight="40.0" prefWidth="40.0">
+                        <TextField prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -233,7 +233,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR5C2" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -241,7 +241,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR5C3" layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -249,7 +249,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR5C4" layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -257,7 +257,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR5C5" layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -272,7 +272,7 @@
                 </HBox>
                 <HBox fx:id="hbxRow6" alignment="CENTER" layoutX="10.0" layoutY="306.0" prefHeight="79.0" prefWidth="315.0" spacing="15.0" GridPane.rowIndex="5">
                     <children>
-                        <TextField fx:id="txtR6C1" prefHeight="40.0" prefWidth="40.0">
+                        <TextField prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -280,7 +280,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR6C2" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -288,7 +288,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR6C3" layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="52.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -296,7 +296,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR6C4" layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="94.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
@@ -304,7 +304,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txtR6C5" layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
+                        <TextField layoutX="136.0" layoutY="10.0" prefHeight="40.0" prefWidth="40.0">
                             <HBox.margin>
                                 <Insets right="5.0" top="10.0" />
                             </HBox.margin>
