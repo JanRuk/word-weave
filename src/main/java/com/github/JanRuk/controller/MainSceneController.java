@@ -48,7 +48,7 @@ public class MainSceneController {
 
     public void initialize() {
         disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
-        setTextFieldsToSingleLetters(hbxRow1,hbxRow2, hbxRow3, hbxRow4, hbxRow5);
+        setTextFieldsToSingleLetters(hbxRow1,hbxRow2, hbxRow3, hbxRow4, hbxRow5,hbxRow6);
         System.out.println(wordToGuess);
     }
 
@@ -68,7 +68,6 @@ public class MainSceneController {
 
         String guessedWord = currentWord.toString().toUpperCase();
 
-
         if (guessedWord.equals(wordToGuess)) {
             new Alert(Alert.AlertType.INFORMATION, "You guessed correctly").show();
         } else {
@@ -83,7 +82,13 @@ public class MainSceneController {
                 HBox hbox = (HBox) node;
                 if (foundCurrent) {
                     setHBoxDisabled(hbox, false);
-                    return;
+
+                    for (Node child : hbox.getChildren()) {
+                        if (child instanceof TextField) {
+                            ((TextField) child).requestFocus();
+                            return;
+                        }
+                    }
                 }
                 if (hbox == activeHbox) {
                     foundCurrent = true;
@@ -149,6 +154,7 @@ public class MainSceneController {
             }
         }
     }
+
     // Enable or disable all text fields in a HBox
     private void setHBoxDisabled(HBox hbox, boolean disabled) {
         for (Node node : hbox.getChildren()) {
