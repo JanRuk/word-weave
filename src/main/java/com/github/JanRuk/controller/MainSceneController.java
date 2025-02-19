@@ -37,11 +37,13 @@ public class MainSceneController {
     public GridPane grdRows;
     public TextField txtR1C1;
     HBox activeHbox;
+    private static String[] wordList;
 
     public void initialize() {
         disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
         setTextFieldsToSingleLetters(hbxRow1, hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
         System.out.println(wordToGuess);
+
     }
 
     public void btnSubmitOnAction(ActionEvent event) {
@@ -49,6 +51,8 @@ public class MainSceneController {
     }
 
     private void playGame() {
+        activeHbox = null;
+        currentWord.setLength(0);
         for (Node node : grdRows.getChildren()) {
             if (node instanceof HBox hbox) {
                 if (isActiveHBox(hbox)) {
@@ -57,15 +61,27 @@ public class MainSceneController {
                 }
             }
         }
+        if (activeHbox == null) {
+            System.out.println("No active hbox");
+            return;
+        }
         for (Node node : activeHbox.getChildren()) {
             if (node instanceof TextField textField) currentWord.append(textField.getText());
         }
-        System.out.println(currentWord.toString());
         String guessedWord = currentWord.toString().toUpperCase();
+
+        System.out.println("Guessed word: " + guessedWord);
+        System.out.println("Correct word: " + wordToGuess);
+
+
         if (guessedWord.equals(wordToGuess)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your guess is Correct.Do you want to continue?", ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> buttonType = alert.showAndWait();
+
             if (buttonType.isPresent() && buttonType.get() == ButtonType.YES) {
+
+                wordToGuess = generateWord();
+                System.out.println("New word: " + wordToGuess);
                 disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
                 setTextFieldsToSingleLetters(hbxRow1, hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
                 cleanText();
@@ -77,20 +93,21 @@ public class MainSceneController {
 
         } else {
             moveToNextHBox(activeHbox);
-            currentWord = new StringBuilder();
+            currentWord.setLength(0);
         }
     }
 
     private void moveToNextHBox(HBox activeHbox) {
         boolean foundCurrent = false;
+
         for (Node node : grdRows.getChildren()) {
             if (node instanceof HBox hbox) {
                 if (foundCurrent) {
                     setHBoxDisabled(hbox, false);
 
                     for (Node child : hbox.getChildren()) {
-                        if (child instanceof TextField) {
-                            ((TextField) child).requestFocus();
+                        if (child instanceof TextField textField) {
+                            textField.requestFocus();
                             return;
                         }
                     }
@@ -104,6 +121,7 @@ public class MainSceneController {
     }
 
     public void btnClearOnAction(ActionEvent event) {
+
     }
 
     public void btnExitOnAction(ActionEvent event) {
@@ -120,15 +138,19 @@ public class MainSceneController {
         }
     }
 
-    private static String generateWord() {
+    private static void loadWords() {
         try {
-            String content = new String(Files.readAllBytes(Paths.get("/home/janinda/Documents/dep-13/projects/word-weave/src/main/resources/word/word-list.txt")));
-            String[] words = content.split(",");
-            return words[new Random().nextInt(words.length)].trim().toUpperCase();
+            String content = Files.readString(Paths.get("src/main/resources/word/word-list.txt"));
+            wordList = content.split(",");
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            wordList =  new String[]{"Error"};
         }
+    }
+
+    private static String generateWord() {
+       if (wordList == null) loadWords();
+       return wordList[new Random().nextInt(wordList.length)].trim().toUpperCase();
     }
 
     private void setTextFieldsToSingleLetters(HBox... hbxRow) {
@@ -158,13 +180,12 @@ public class MainSceneController {
             }
         }
     }
+    
     // Enable or disable all text fields in a HBox
-
     private void setHBoxDisabled(HBox hbox, boolean disabled) {
         for (Node node : hbox.getChildren()) {
             if (node instanceof TextField) {
                 ((TextField) node).setDisable(disabled);
-                if (!disabled) ((TextField) node).requestFocus();
             }
         }
     }
