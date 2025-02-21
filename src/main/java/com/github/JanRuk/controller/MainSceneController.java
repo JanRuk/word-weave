@@ -1,5 +1,6 @@
 package com.github.JanRuk.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -16,7 +17,8 @@ import java.util.Random;
 
 public class MainSceneController {
 
-    public static String wordToGuess = generateWord();
+    private static String[] wordList;
+    public static String wordToGuess;
     public AnchorPane anchrpnTitle;
     public Button btnClear;
     public Button btnExit;
@@ -37,12 +39,29 @@ public class MainSceneController {
     public GridPane grdRows;
     public TextField txtR1C1;
     HBox activeHbox;
-    private static String[] wordList;
+
+    private static void loadWords() {
+        try {
+            String content = Files.readString(Paths.get("src/main/resources/word/word-list.txt"));
+            wordList = content.split(",");
+        } catch (IOException e) {
+            e.printStackTrace();
+            wordList = new String[]{"Error"};
+        }
+    }
+
+    private static String generateWord() {
+        if (wordList == null) loadWords();
+        return wordList[new Random().nextInt(wordList.length)].trim().toUpperCase();
+    }
 
     public void initialize() {
+        if (wordToGuess == null || wordToGuess.isEmpty()) {
+            wordToGuess = generateWord();
+        }
         disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
         setTextFieldsToSingleLetters(hbxRow1, hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
-        System.out.println(wordToGuess);
+//        System.out.println(wordToGuess);
 
     }
 
@@ -79,21 +98,21 @@ public class MainSceneController {
             Optional<ButtonType> buttonType = alert.showAndWait();
 
             if (buttonType.isPresent() && buttonType.get() == ButtonType.YES) {
-
                 wordToGuess = generateWord();
-                System.out.println("New word: " + wordToGuess);
-                disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
-                setTextFieldsToSingleLetters(hbxRow1, hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
-                cleanText();
-                setHBoxDisabled(hbxRow1, false);
-                txtR1C1.requestFocus();
+                resetGame();
             } else if (buttonType.get() == ButtonType.NO) {
                 btnExit.fire();
             }
 
         } else {
-            moveToNextHBox(activeHbox);
-            currentWord.setLength(0);
+            if (isLastLastHbox(activeHbox)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Game Over! The correnct word was: " + wordToGuess, ButtonType.OK);
+                alert.showAndWait();
+                resetGame();
+            } else {
+                moveToNextHBox(activeHbox);
+                currentWord.setLength(0);
+            }
         }
     }
 
@@ -125,7 +144,7 @@ public class MainSceneController {
     }
 
     public void btnExitOnAction(ActionEvent event) {
-
+        Platform.exit();
     }
 
     private void disableRows(HBox... hbxRow) {
@@ -136,21 +155,6 @@ public class MainSceneController {
                 }
             }
         }
-    }
-
-    private static void loadWords() {
-        try {
-            String content = Files.readString(Paths.get("src/main/resources/word/word-list.txt"));
-            wordList = content.split(",");
-        } catch (IOException e) {
-            e.printStackTrace();
-            wordList =  new String[]{"Error"};
-        }
-    }
-
-    private static String generateWord() {
-       if (wordList == null) loadWords();
-       return wordList[new Random().nextInt(wordList.length)].trim().toUpperCase();
     }
 
     private void setTextFieldsToSingleLetters(HBox... hbxRow) {
@@ -180,7 +184,7 @@ public class MainSceneController {
             }
         }
     }
-    
+
     // Enable or disable all text fields in a HBox
     private void setHBoxDisabled(HBox hbox, boolean disabled) {
         for (Node node : hbox.getChildren()) {
@@ -207,5 +211,19 @@ public class MainSceneController {
         }
     }
 
+    private void resetGame() {
+        wordToGuess = generateWord();
+        System.out.println("New word: " + wordToGuess);
+        disableRows(hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
+        setTextFieldsToSingleLetters(hbxRow1, hbxRow2, hbxRow3, hbxRow4, hbxRow5, hbxRow6);
+        cleanText();
+        setHBoxDisabled(hbxRow1, false);
+        txtR1C1.requestFocus();
+    }
+
+    private boolean isLastLastHbox(HBox hbox) {
+        int index = grdRows.getChildren().indexOf(hbox);
+        return index == grdRows.getChildren().size() - 1;
+    }
 }
 
