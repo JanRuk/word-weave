@@ -339,7 +339,7 @@
                 <Font size="17.0" />
             </font>
         </Label>
-        <AnchorPane layoutX="78.0" layoutY="503.0" prefHeight="100.0" prefWidth="520.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0">
+        <AnchorPane fx:id="paneLetterBox" layoutX="78.0" layoutY="503.0" prefHeight="100.0" prefWidth="520.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0">
             <children>
                 <HBox layoutX="4.0" layoutY="-7.0" prefHeight="50.0" prefWidth="520.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>

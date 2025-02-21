@@ -9,7 +9,7 @@
 - **SceneBuilder:** For designing the UI layout.
 
 ### Version
-0.1.0
+0.2.0
 
 ### License
 Copyright &copy; 2025 Janinda Rukshan. All Rights Reserved.  

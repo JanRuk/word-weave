@@ -38,6 +38,7 @@ public class MainSceneController {
     public AnchorPane root;
     public GridPane grdRows;
     public TextField txtR1C1;
+    public AnchorPane paneLetterBox;
     HBox activeHbox;
 
     private static void loadWords() {
@@ -92,6 +93,7 @@ public class MainSceneController {
         System.out.println("Guessed word: " + guessedWord);
         System.out.println("Correct word: " + wordToGuess);
 
+        checkLetterPositions(guessedWord, wordToGuess);
 
         if (guessedWord.equals(wordToGuess)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your guess is Correct.Do you want to continue?", ButtonType.YES, ButtonType.NO);
@@ -114,6 +116,64 @@ public class MainSceneController {
                 currentWord.setLength(0);
             }
         }
+    }
+
+    private void checkLetterPositions(String guessedWord, String wordToGuess) {
+        char[] correctWordArray = wordToGuess.toCharArray();
+        char[] guessedWordArray = guessedWord.toCharArray();
+
+        for (int i = 0; i < guessedWordArray.length; i++) {
+            char guessedChar = guessedWordArray[i];
+
+            for (Node node : activeHbox.getChildren()) {
+                if (node instanceof TextField textField && textField.getText().equalsIgnoreCase(String.valueOf(guessedChar))) {
+                    Label letterLabel = getLabelForLetter(guessedChar);
+
+                    if (correctWordArray[i] == guessedChar) {
+//                        textField.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                        if (letterLabel != null) letterLabel.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                    } else if (wordToGuess.contains(String.valueOf(guessedChar))) {
+//                        textField.setStyle("-fx-background-color: yellow; -fx-text-fill: black;");
+                        if (letterLabel != null) letterLabel.setStyle("-fx-background-color: yellow; -fx-text-fill: black;");
+                    } else {
+//                        textField.setStyle("-fx-background-color: grey; -fx-text-fill: black;");
+                        if (letterLabel != null) letterLabel.setStyle("-fx-background-color: grey; -fx-text-fill: black;");
+                    }
+                }
+            }
+        }
+    }
+
+    private Label getLabelForLetter(char letter) {
+        return switch (Character.toUpperCase(letter)) {
+            case 'A' -> lblA;
+            case 'B' -> lblB;
+            case 'C' -> lblC;
+            case 'D' -> lblD;
+            case 'E' -> lblE;
+            case 'F' -> lblF;
+            case 'G' -> lblG;
+            case 'H' -> lblH;
+            case 'I' -> lblI;
+            case 'J' -> lblJ;
+            case 'K' -> lblK;
+            case 'L' -> lblL;
+            case 'M' -> lblM;
+            case 'N' -> lblN;
+            case 'O' -> lblO;
+            case 'P' -> lblP;
+            case 'Q' -> lblQ;
+            case 'R' -> lblR;
+            case 'S' -> lblS;
+            case 'T' -> lblT;
+            case 'U' -> lblU;
+            case 'V' -> lblV;
+            case 'W' -> lblW;
+            case 'X' -> lblX;
+            case 'Y' -> lblY;
+            case 'Z' -> lblZ;
+            default -> null;
+        };
     }
 
     private void moveToNextHBox(HBox activeHbox) {
@@ -219,6 +279,12 @@ public class MainSceneController {
         cleanText();
         setHBoxDisabled(hbxRow1, false);
         txtR1C1.requestFocus();
+
+        Label[] labels = {lblA, lblB, lblC, lblD, lblE, lblF,lblG, lblH, lblI,lblJ,lblK,lblL,lblM,lblN,lblO,lblP,lblQ,lblR,lblS,lblT,lblU,lblV,lblW,lblX,lblY,lblZ};
+        for (Label label : labels) {
+            if (label !=null) label.setStyle("");
+        }
+
     }
 
     private boolean isLastLastHbox(HBox hbox) {
